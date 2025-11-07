@@ -25,7 +25,6 @@ services:
       dockerfile: Dockerfile
     env_file:
       - path: ./src/.env
-    image: ucar_backend
     container_name: ucar_backend
     ports:
       - "${APP_PORT}:${APP_PORT}"
