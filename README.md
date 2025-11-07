@@ -141,18 +141,3 @@ docker-compose.yaml         # Конфигурация Docker Compose
 - `APP_PORT` - порт приложения
 - `APP_HOST` - хост приложения
 
-## Разработка
-
-### Добавление новых эндпоинтов
-
-1. Определите схемы в `schemas/`
-2. Реализуйте бизнес-логику в `services/`
-3. Добавьте маршруты в `api/routers.py`
-
-### Миграции базы данных
-
-```bash
-cd src
-alembic revision --autogenerate -m "Описание изменений"
-alembic upgrade head
-```
