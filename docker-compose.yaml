@@ -36,6 +36,13 @@ services:
     depends_on:
       ucar_db:
         condition: service_healthy
+    command: >
+      sh -c "
+        echo 'Applying database migrations...' &&
+        poetry run alembic upgrade head &&
+        echo 'Starting application...' &&
+        poetry run python -m main
+      "
     networks:
       - net
 

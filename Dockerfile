@@ -17,8 +17,10 @@ COPY src/pyproject.toml /opt/pyproject.toml
 RUN poetry install
 COPY src .
 
-COPY src/start.sh /opt/start.sh
+# Применение миграций базы данных на этапе сборки образа
+# Примечание: Миграции будут применены при запуске контейнера через command в docker-compose
 
+COPY src/start.sh /opt/start.sh
 RUN chmod +x /opt/start.sh
 
 RUN chown -R 1001 /opt/ \
@@ -39,4 +41,5 @@ RUN chown -R 1001 /opt/ \
 
 USER 1001
 
-ENTRYPOINT ["/bin/bash", "start.sh"]
+# Миграции будут выполняться через docker-compose command
+CMD ["poetry", "run", "python", "-m", "main"]
