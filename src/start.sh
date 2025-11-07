@@ -1,5 +1,4 @@
-sleep 10
-ROJECT_ROOT=/opt poetry run alembic upgrade head
+PROJECT_ROOT=/opt poetry run alembic upgrade head
 # add initial data to tables from SQL scripts
 # PROJECT_ROOT=/opt poetry run python -m db.init_db
 # start the application 
